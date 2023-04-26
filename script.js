@@ -67,7 +67,7 @@ function playRound(playerSelection, computerSelection) {
       }
       break;
     default:
-      console.log("Something wrong :(");
+      console.log("Try again");
   }
 }
 
