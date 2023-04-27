@@ -13,62 +13,92 @@ function getComputerChoice() {
   }
 }
 
-const computerSelection = getComputerChoice();
-const playerSelection = prompt("Rock, Paper or Scissors?:");
+let computerWin = false;
+let playerWin = false;
 
-function playRound(playerSelection, computerSelection) {
-  console.log(playerSelection);
+function playRound() {
+  let playerSelection = prompt("Rock, Paper or Scissors?:");
+  let computerSelection = getComputerChoice();
+
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
+
+  let wonStr = "You won!";
+  let lostStr = "You lost!";
+  const drawStr = "Draw!";
+  const troubleStr = "Something went wrong :(";
+
   switch (playerSelection) {
     case "rock":
       switch (computerSelection) {
         case "rock":
-          return "Draw!";
-          break;
+          console.log(drawStr);
         case "paper":
-          return "You lost! Paper beats Rock";
-          break;
+          computerWin = true;
+          console.log(`${lostStr} Paper beats Rock`);
+          return computerWin;
         case "scissors":
-          return "You won! Rock beats Scissors";
-          break;
+          playerWin = true;
+          console.log(`${wonStr} Rock beats Scissors`);
+          return playerWin;
         default:
-          return "Something went wrong :(";
+          console.log(troubleStr);
       }
-      break;
     case "paper":
       switch (computerSelection) {
         case "rock":
-          return "You won! Paper beats Rock";
-          break;
+          playerWin = true;
+          console.log(`${wonStr} Paper beats Rock`);
+          return playerWin;
         case "paper":
-          return "Draw!";
-          break;
+          console.log(drawStr);
         case "scissors":
-          return "You lost! Scissors beats Paper";
-          break;
+          computerWin = true;
+          console.log(`${lostStr} Scissors beats Paper`);
+          return computerWin;
         default:
-          return "Something went wrong :(";
+          console.log(troubleStr);
       }
-      break;
     case "scissors":
       switch (computerSelection) {
         case "rock":
-          return "You lost! Rock beats Scissors";
-          break;
+          computerWin = true;
+          console.log(`${lostStr} Rock beats Scissors`);
+          return computerWin;
         case "paper":
-          return "You won! Scissors beats Paper";
-          break;
+          playerWin = true;
+          console.log(`${wonStr} Scissors beats Paper`);
+          return playerWin;
         case "scissors":
-          return "Draw!";
-          break;
+          console.log(drawStr);
         default:
-          return "Something went wrong :(";
+          console.log(troubleStr);
       }
-      break;
     default:
-      return "Try again";
+      console.log("Try again");
   }
 }
 
-console.log(playRound(playerSelection, computerSelection));
+// playRound(playerSelection, computerSelection);
+
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+
+  while (playerScore < 5 && computerScore < 5) {
+    playRound();
+    if (playerWin == true) {
+      playerScore++;
+    } else if (computerWin == true) {
+      computerScore++;
+    }
+    console.log(`Score: ${playerScore} -- ${computerScore}`);
+  }
+  if (playerScore === 5) {
+    console.log(`You won!`);
+  } else {
+    console.log(`Computer won!`);
+  }
+}
+
+game();
