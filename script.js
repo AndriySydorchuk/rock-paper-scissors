@@ -24,51 +24,51 @@ function playRound(playerSelection, computerSelection) {
     case "rock":
       switch (computerSelection) {
         case "rock":
-          console.log("Draw!");
+          return "Draw!";
           break;
         case "paper":
-          console.log("You lost! Paper beats Rock");
+          return "You lost! Paper beats Rock";
           break;
         case "scissors":
-          console.log("You won! Rock beats Scissors");
+          return "You won! Rock beats Scissors";
           break;
         default:
-          console.log("Something went wrong :(");
+          return "Something went wrong :(";
       }
       break;
     case "paper":
       switch (computerSelection) {
         case "rock":
-          console.log("You won! Paper beats Rock");
+          return "You won! Paper beats Rock";
           break;
         case "paper":
-          console.log("Draw!");
+          return "Draw!";
           break;
         case "scissors":
-          console.log("You lost! Scissors beats Paper");
+          return "You lost! Scissors beats Paper";
           break;
         default:
-          console.log("Something went wrong :(");
+          return "Something went wrong :(";
       }
       break;
     case "scissors":
       switch (computerSelection) {
         case "rock":
-          console.log("You lost! Rock beats Scissors");
+          return "You lost! Rock beats Scissors";
           break;
         case "paper":
-          console.log("You won! Scissors beats Paper");
+          return "You won! Scissors beats Paper";
           break;
         case "scissors":
-          console.log("Draw!");
+          return "Draw!";
           break;
         default:
-          console.log("Something went wrong :(");
+          return "Something went wrong :(";
       }
       break;
     default:
-      console.log("Try again");
+      return "Try again";
   }
 }
 
-playRound(playerSelection, computerSelection);
+console.log(playRound(playerSelection, computerSelection));
