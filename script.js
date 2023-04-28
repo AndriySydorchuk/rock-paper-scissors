@@ -79,8 +79,6 @@ function playRound() {
   }
 }
 
-// playRound(playerSelection, computerSelection);
-
 function game() {
   let playerScore = 0;
   let computerScore = 0;
@@ -89,8 +87,10 @@ function game() {
     playRound();
     if (playerWin == true) {
       playerScore++;
+      playerWin = false;
     } else if (computerWin == true) {
       computerScore++;
+      computerWin = false;
     }
     console.log(`Score: ${playerScore} -- ${computerScore}`);
   }
