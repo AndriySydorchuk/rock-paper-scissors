@@ -4,7 +4,7 @@ const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
   button.addEventListener("click", function () {
-    playRound(button);
+    game(button);
   });
 });
 
@@ -85,26 +85,22 @@ function playRound(button) {
   }
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
-  while (playerScore < 5 && computerScore < 5) {
-    playRound(button);
-    if (playerWin == true) {
-      playerScore++;
-      playerWin = false;
-    } else if (computerWin == true) {
-      computerScore++;
-      computerWin = false;
-    }
-    resultsOutput.textContent += `Score: ${playerScore} -- ${computerScore}`;
+function game(button) {
+  playRound(button);
+  if (playerWin == true) {
+    playerScore++;
+    playerWin = false;
+  } else if (computerWin == true) {
+    computerScore++;
+    computerWin = false;
   }
+  scoreOutput.textContent = `${playerScore} -- ${computerScore}`;
   if (playerScore === 5) {
-    resultsOutput.textContent += "You won!";
-  } else {
-    resultsOutput.textContent += "Computer won!";
+    resultsOutput.innerHTML += `<br><b>You won!</b>`;
+  } else if (computerScore === 5) {
+    resultsOutput.innerHTML += `<br><b>Computer won!</b>`;
   }
 }
-
-// game();
