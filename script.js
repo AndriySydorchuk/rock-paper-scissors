@@ -11,11 +11,11 @@ buttons.forEach((button) => {
 function getComputerChoice() {
   const num = Math.trunc(Math.random() * 3 + 1);
   if (num === 1) {
-    return "Rock";
+    return "rock";
   } else if (num === 2) {
-    return "Paper";
+    return "paper";
   } else if (num === 3) {
-    return "Scissors";
+    return "scissors";
   } else {
     console.log("I've no idea what to choose");
   }
@@ -29,10 +29,6 @@ function playRound(button) {
   let computerSelection = getComputerChoice();
 
   playerSelection = playerSelection.toLowerCase();
-  computerSelection = computerSelection.toLowerCase();
-
-  console.log(playerSelection);
-  console.log(computerSelection);
 
   let wonStr = "You won!";
   let lostStr = "You lost!";
