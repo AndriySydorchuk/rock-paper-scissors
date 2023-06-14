@@ -1,4 +1,18 @@
-"use strict";
+const rockBtn = document.querySelector(".rock-btn");
+const paperBtn = document.querySelector(".paper-btn");
+const scissorsBtn = document.querySelector(".scissors-btn");
+
+rockBtn.addEventListener("click", () => {
+  console.log("rock");
+});
+
+paperBtn.addEventListener("click", () => {
+  console.log("paper");
+});
+
+scissorsBtn.addEventListener("click", () => {
+  console.log("scissors");
+});
 
 function getComputerChoice() {
   const num = Math.trunc(Math.random() * 3 + 1);
@@ -101,4 +115,4 @@ function game() {
   }
 }
 
-game();
+// game();
