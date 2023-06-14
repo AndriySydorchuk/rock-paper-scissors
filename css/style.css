@@ -7,12 +7,21 @@ body {
   box-sizing: border-box;
   min-height: 100vh;
   display: grid;
-  place-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1rem;
+  padding: 1rem;
+}
+
+figure {
+  background-image: url("../images/img.jpg");
+  background-size: cover;
+  background-position: right;
 }
 
 .buttons-box {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  min-height: 40%;
+  grid-template-rows: repeat(3, 30%);
+  row-gap: 1rem;
   margin: 1rem 0 1rem;
-  column-gap: 0.5rem;
 }
