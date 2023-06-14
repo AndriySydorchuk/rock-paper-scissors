@@ -1,26 +1,11 @@
-const rockBtn = document.querySelector(".rock-btn");
-const paperBtn = document.querySelector(".paper-btn");
-const scissorsBtn = document.querySelector(".scissors-btn");
+const resultsOutput = document.querySelector(".results");
+const scoreOutput = document.querySelector(".score");
+const buttons = document.querySelectorAll("button");
 
-rockBtn.addEventListener("click", () => {
-  let playerSelection = rockBtn.value;
-  console.log(playerSelection);
-  let computerSelection = getComputerChoice();
-  console.log(computerSelection);
-});
-
-paperBtn.addEventListener("click", () => {
-  let playerSelection = paperBtn.value;
-  console.log(playerSelection);
-  let computerSelection = getComputerChoice();
-  console.log(computerSelection);
-});
-
-scissorsBtn.addEventListener("click", () => {
-  let playerSelection = scissorsBtn.value;
-  console.log(playerSelection);
-  let computerSelection = getComputerChoice();
-  console.log(computerSelection);
+buttons.forEach((button) => {
+  button.addEventListener("click", function () {
+    playRound(button);
+  });
 });
 
 function getComputerChoice() {
@@ -39,9 +24,15 @@ function getComputerChoice() {
 let computerWin = false;
 let playerWin = false;
 
-function playRound() {
+function playRound(button) {
+  let playerSelection = button.value;
+  let computerSelection = getComputerChoice();
+
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
+
+  console.log(playerSelection);
+  console.log(computerSelection);
 
   let wonStr = "You won!";
   let lostStr = "You lost!";
@@ -52,50 +43,51 @@ function playRound() {
     case "rock":
       switch (computerSelection) {
         case "rock":
-          console.log(drawStr);
+          resultsOutput.textContent = drawStr;
         case "paper":
           computerWin = true;
-          console.log(`${lostStr} Paper beats Rock`);
+          resultsOutput.textContent = `${lostStr} Paper beats Rock`;
           return computerWin;
         case "scissors":
           playerWin = true;
-          console.log(`${wonStr} Rock beats Scissors`);
+          resultsOutput.textContent = `${wonStr} Rock beats Scissors`;
           return playerWin;
         default:
-          console.log(troubleStr);
+          resultsOutput.textContent = troubleStr;
       }
     case "paper":
       switch (computerSelection) {
         case "rock":
           playerWin = true;
-          console.log(`${wonStr} Paper beats Rock`);
+          resultsOutput.textContent = `${wonStr} Paper beats Rock`;
           return playerWin;
         case "paper":
-          console.log(drawStr);
+          resultsOutput.textContent = drawStr;
         case "scissors":
           computerWin = true;
-          console.log(`${lostStr} Scissors beats Paper`);
+          resultsOutput.textContent = `${lostStr} Scissors beats Paper`;
           return computerWin;
         default:
-          console.log(troubleStr);
+          resultsOutput.textContent = troubleStr;
       }
     case "scissors":
       switch (computerSelection) {
         case "rock":
           computerWin = true;
-          console.log(`${lostStr} Rock beats Scissors`);
+          resultsOutput.textContent = `${lostStr} Rock beats Scissors`;
           return computerWin;
         case "paper":
           playerWin = true;
-          console.log(`${wonStr} Scissors beats Paper`);
+          resultsOutput.textContent = `${wonStr} Scissors beats Paper`;
           return playerWin;
         case "scissors":
-          console.log(drawStr);
+          resultsOutput.textContent = drawStr;
         default:
+          resultsOutput.textContent = troubleStr;
           console.log(troubleStr);
       }
     default:
-      console.log("Try again");
+      resultsOutput.textContent = "Try again";
   }
 }
 
@@ -104,7 +96,7 @@ function game() {
   let computerScore = 0;
 
   while (playerScore < 5 && computerScore < 5) {
-    playRound();
+    playRound(button);
     if (playerWin == true) {
       playerScore++;
       playerWin = false;
@@ -112,12 +104,12 @@ function game() {
       computerScore++;
       computerWin = false;
     }
-    console.log(`Score: ${playerScore} -- ${computerScore}`);
+    resultsOutput.textContent += `Score: ${playerScore} -- ${computerScore}`;
   }
   if (playerScore === 5) {
-    console.log(`You won!`);
+    resultsOutput.textContent += "You won!";
   } else {
-    console.log(`Computer won!`);
+    resultsOutput.textContent += "Computer won!";
   }
 }
 
