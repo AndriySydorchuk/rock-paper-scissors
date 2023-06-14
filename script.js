@@ -28,8 +28,6 @@ function playRound(button) {
   let playerSelection = button.value;
   let computerSelection = getComputerChoice();
 
-  playerSelection = playerSelection.toLowerCase();
-
   let wonStr = "You won!";
   let lostStr = "You lost!";
   const drawStr = "Draw!";
